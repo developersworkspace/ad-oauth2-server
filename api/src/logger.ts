@@ -9,7 +9,7 @@ let logger = new (winston.Logger)({
     transports: [
       new (winston.transports.Console)({ level: 'debug' }),
       new (winston.transports.File)({
-        filename: path.join(config.logging.path, 'techradar_api.log'),
+        filename: path.join(config.logging.path, 'ad-oauth2-server_api.log'),
         level: 'debug'
       })
     ]

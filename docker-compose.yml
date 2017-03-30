@@ -1,0 +1,14 @@
+version: '2'
+services:
+    api:
+        build: api
+        ports:
+        - "4000:4000"
+        links: 
+        - mongo
+        volumes:
+        - /logs:/logs
+    mongo:
+        image: "mongo"
+        volumes:
+        - /docker/mongodb:/data/db

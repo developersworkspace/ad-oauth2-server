@@ -7,6 +7,9 @@ import { OAuth2Middleware, MockRepository } from 'oauth2-middleware';
 
 import * as ActiveDirectory from 'activedirectory';
 
+// Imports configuration
+import { config } from './config';
+
 // Imports logger
 import { logger } from './logger';
 
@@ -30,14 +33,14 @@ export class WebApi {
     private validateCredentialsFn(clientId, username: string, password: string): Promise<Boolean> {
         return new Promise((resolve: Function, reject: Function) => {
             
-            var config = {
+            var configuration = {
                 url: 'ldap://EUROCT1.euromonitor.local',
                 baseDN: 'dc=euromonitor,dc=local',
                 username: `${username}@euromonitor.local`,
                 password: password
             }
 
-            var ad = new ActiveDirectory(config);
+            var ad = new ActiveDirectory(configuration);
 
             ad.authenticate(`${username}@euromonitor.local`, password, (err: Error, auth: any) => {
                 if (err) {
@@ -66,8 +69,6 @@ export class WebApi {
 }
 
 
-
-let port = 3000;
-let api = new WebApi(express(), port);
+let api = new WebApi(express(), config.api.port);
 api.run();
-logger.info(`Listening on ${port}`);
+logger.info(`Listening on ${config.api.port}`);

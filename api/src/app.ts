@@ -71,7 +71,7 @@ export class WebApi {
 
             request({
                 method: 'GET',
-                uri: `${config.api.uri}/auth/token?client_id=${this.clientId}&client_secret=${this.clientSecret}&grant_type=authorization_code&code=${req.query.token}&redirect_uri=${this.redirectUri}`,
+                uri: `${config.api.localRequestUri}/auth/token?client_id=${this.clientId}&client_secret=${this.clientSecret}&grant_type=authorization_code&code=${req.query.token}&redirect_uri=${this.redirectUri}`,
                 json: true
             }, (error, response, body) => {
                 if (error) {

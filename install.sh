@@ -16,15 +16,15 @@ npm install -g typescript
 npm install -g gulp
 
 # Clone 'ad-oauth2-sevrver' repository
-git clone https://github.com/developersworkspace/ad-oauth2-sevrver.git
+git clone https://github.com/developersworkspace/ad-oauth2-server.git
 
-# Change directory to 'web'
+# Change directory to 'api'
 cd ./ad-oauth2-server/api
 
-# Install node packages for 'web'
+# Install node packages for 'api'
 npm install
 
-# Build 'web'
+# Build 'api'
 npm run build
 
 # Change to root of repository

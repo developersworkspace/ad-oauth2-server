@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs": "apidoc -i ./src/ -o docs/",
+    "build": "gulp build:prod",
+    "start": "gulp build:dev & node ./src/app.js"
+  },
+  "author": "Barend Erasmus",
+  "license": "MIT",
+  "dependencies": {
+    "@types/winston": "^2.2.0",
+    "activedirectory": "^0.7.2",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-winston": "^2.3.0",
+    "oauth2-middleware": "^1.0.4",
+    "typescript": "^2.2.1",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.35",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-typescript": "^3.1.5",
+    "run-sequence": "^1.2.2"
+  }
+}

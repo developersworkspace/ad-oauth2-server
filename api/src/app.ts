@@ -91,7 +91,7 @@ export class WebApi {
                         json: true
                     }, (error, response, body) => {
                         if (response.statusCode == 200) {
-                            res.redirect(`http://staging.portal.euromonitor.com/Portal/Account/WebAppGatewayCallback?ClearClaim=true&AuthToken=${body}`);
+                            res.redirect(`http://staging.portal.euromonitor.com/Portal?ClearClaim=true&AuthToken=${body}`);
                         } else {
                             res.send(body);
                         }

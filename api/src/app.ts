@@ -82,16 +82,16 @@ export class WebApi {
 
                     request({
                         method: 'POST',
-                        uri: 'http://trinity.euromonitor.local/api/auth/token',
+                        uri: 'http://trinity.euromonitor.com/api/auth/token',
                         body: {
-                            SubscriberId: 40335,
+                            SubscriberId: req.query.state,
                             Username: `EURO_NT\\${username}`,
                             ApplicationId: 1
                         },
                         json: true
                     }, (error, response, body) => {
                         if (response.statusCode == 200) {
-                            res.redirect(`http://portal.euromonitor.local/Portal/Account/WebAppGatewayCallback?ClearClaim=true&AuthToken=${body}`);
+                            res.redirect(`http://staging.portal.euromonitor.com/Portal/Account/WebAppGatewayCallback?ClearClaim=true&AuthToken=${body}`);
                         } else {
                             res.send(body);
                         }

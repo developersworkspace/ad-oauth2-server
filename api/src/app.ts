@@ -74,8 +74,9 @@ export class WebApi {
                 uri: `${config.api.localRequestUri}/auth/token?client_id=${this.clientId}&client_secret=${this.clientSecret}&grant_type=authorization_code&code=${req.query.token}&redirect_uri=${this.redirectUri}`,
                 json: true
             }, (error, response, body) => {
+                
                 if (error) {
-                    res.status(500).end();
+                    res.status(500).send(error.message);
                 } else if (response.statusCode == 200) {
 
                     let username = body.info.username;
@@ -97,7 +98,7 @@ export class WebApi {
                         }
                     });
                 } else {
-                    res.status(500).end();
+                    res.status(500).send(body);
                 }
             });
         });

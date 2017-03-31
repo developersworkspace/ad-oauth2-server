@@ -64,7 +64,7 @@ export class WebApi {
     }
 
     private configureRoutes(app: express.Express) {
-        app.use("/auth", new OAuth2Middleware(this.validateCredentialsFn, new MockRepository()).router);
+        app.use("/auth", new OAuth2Middleware(this.validateCredentialsFn, new MockRepository(), 120000, 30000, 1800000).router);
 
 
         app.get('/callback', (req, res) => {

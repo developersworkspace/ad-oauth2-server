@@ -67,13 +67,13 @@ export class WebApi {
         app.use("/auth", new OAuth2Middleware(this.validateCredentialsFn, new MockRepository(), 120000, 30000, 1800000).router);
 
 
-        app.get('/callback', (req, res) => {
+        app.get('/callback', (req: express.Request, res: express.Response) => {
 
             request({
                 method: 'GET',
                 uri: `${config.api.localRequestUri}/auth/token?client_id=${this.clientId}&client_secret=${this.clientSecret}&grant_type=authorization_code&code=${req.query.token}&redirect_uri=${this.redirectUri}`,
                 json: true
-            }, (error, response, body) => {
+            }, (error: Error, response, body: any) => {
                 
                 if (error) {
                     res.status(500).send(error.message);
@@ -90,7 +90,7 @@ export class WebApi {
                             ApplicationId: 1
                         },
                         json: true
-                    }, (error, response, body) => {
+                    }, (error: Error, response, body: any) => {
                         if (response.statusCode == 200) {
                             res.redirect(`http://staging.portal.euromonitor.com/Portal?ClearClaim=true&AuthToken=${body}`);
                         } else {
